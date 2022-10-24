@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { authModule } from './auth/auth.module';
 import { Postagem } from './postagem/entities/postagem.entity';
 import { PostagemOrmModule } from './postagem/postagem.module';
 import { Tema } from './tema/entities/tema.entity';
@@ -17,7 +18,7 @@ import { TemaModule } from './tema/tema.module';
       entities: [Postagem, Tema],
       synchronize: true
     }),
-    PostagemOrmModule, TemaModule
+    PostagemOrmModule, TemaModule ,  authModule
   ],
   controllers: [],
   providers: [],
