@@ -1,5 +1,6 @@
 import { Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe } from "@nestjs/common";
-import { Body, Delete, Post, Put } from "@nestjs/common/decorators";
+import { Body, Delete, Post, Put, UseGuards } from "@nestjs/common/decorators";
+import { JwtAuthGuard } from "src/auth/guard/jwt-auth.guard";
 import { Postagem } from "../entities/postagem.entity";
 import { PostagemService } from "../services/postagem.service";
 
@@ -7,7 +8,7 @@ import { PostagemService } from "../services/postagem.service";
 @Controller('/postagens')
 export class PostagemControler {
     constructor (private readonly postagemService: PostagemService) {}
-
+    @UseGuards(JwtAuthGuard)
     @Get()
     @HttpCode(HttpStatus.OK)
     findAll(): Promise<Postagem[]> {

@@ -2,6 +2,7 @@ import { HttpException, Injectable, HttpStatus, ParseIntPipe} from "@nestjs/comm
 import { Body, Get, HttpCode, Param, Put } from "@nestjs/common/decorators";
 import { InjectRepository } from "@nestjs/typeorm";
 import { TemaService } from "src/tema/services/tema.service";
+import { Usuario } from "src/usuario/entities/usuario.entitys";
 import { DeleteResult, ILike, Repository } from "typeorm";
 import { Postagem } from "../entities/postagem.entity";
 
@@ -17,7 +18,9 @@ export class PostagemService {
     async findAll (): Promise<Postagem[]> {
         return await this.postagemRepository.find({
             relations: {
-                tema: true
+                tema: true ,
+                usuario: true
+            
             }
         })
     }
@@ -29,7 +32,8 @@ export class PostagemService {
                 id
             },
             relations: {
-                tema: true
+                tema: true ,
+                usuario: true
             }
         });
 
@@ -44,7 +48,8 @@ export class PostagemService {
                 titulo: ILike(`%${titulo}%`)
             },
             relations: {
-                tema: true
+                tema: true ,
+                usuario: true                
             }
         })
     }
