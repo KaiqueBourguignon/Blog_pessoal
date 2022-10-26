@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-import { UsuarioLogin } from './auth/entities/usuariologin.entity';
 import { Postagem } from './postagem/entities/postagem.entity';
 import { PostagemOrmModule } from './postagem/postagem.module';
 import { Tema } from './tema/entities/tema.entity';
